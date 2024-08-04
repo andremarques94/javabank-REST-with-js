@@ -1,16 +1,15 @@
-import express from "express";
-import http from "http";
+import express, { json } from "express";
 import customerRouter from "./routes/customer.js";
 import cors from "cors";
-import db from "./db/db.js";
+import "./db/db.js";
 
 const app = express();
+
 app.use(cors());
-app.use(express.json());
-const server = http.createServer(app);
+app.use(json());
 
 app.use("/api", customerRouter);
 
-server.listen(3000, () => {
+app.listen(3000, () => {
   console.log("Server is running on http://localhost:3000");
 });
