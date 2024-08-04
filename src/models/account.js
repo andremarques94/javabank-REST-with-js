@@ -18,6 +18,14 @@ class Account extends Model {
       },
     };
   }
+
+  static get modifiers() {
+    return {
+      defaultSelects(builder) {
+        builder.select("id", "account_type", "balance", "customer_id");
+      },
+    };
+  }
 }
 
 export default Account;
