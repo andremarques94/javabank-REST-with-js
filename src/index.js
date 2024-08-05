@@ -3,7 +3,7 @@ import customerRouter from "./routes/customer.js";
 import cors from "cors";
 import "./db/db.js";
 
-const PORT = 3000;
+const PORT = process.env.SERVER_PORT || 3000;
 const app = express();
 
 app.use(cors());
