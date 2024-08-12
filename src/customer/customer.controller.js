@@ -1,4 +1,4 @@
-import * as customerService from "../services/customer-service.js";
+import * as customerService from "./customer.service.js";
 
 export async function getCustomers(req, res) {
   const data = await customerService.listCustomers();

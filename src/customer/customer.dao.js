@@ -1,4 +1,4 @@
-import Customer from "../models/customer.js";
+import Customer from "./customer.js";
 
 export async function list() {
   return Customer.query().select(

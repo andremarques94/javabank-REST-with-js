@@ -1,6 +1,6 @@
-import { list, get, create, remove, update } from "../daos/customer-dao.js";
 import { transaction } from "objection";
-import Customer from "../models/customer.js";
+import { list, get, create, remove, update } from "./customer.dao.js";
+import Customer from "./customer.js";
 
 export async function listCustomers() {
   return list();
