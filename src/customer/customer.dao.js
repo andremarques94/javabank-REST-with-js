@@ -1,6 +1,6 @@
 import Customer from "./customer.js";
 
-export async function list() {
+export async function findAll() {
   return Customer.query().select(
     "id",
     "firstName",
@@ -10,19 +10,17 @@ export async function list() {
   );
 }
 
-export async function get(id) {
+export async function findById(id) {
   return Customer.query()
     .findById(id)
     .select("id", "firstName", "lastName", "email", "phone")
     .withGraphFetched("accounts(defaultSelects)");
 }
 
-export function create(customer) {
-  return Customer.query().insert(customer);
-}
-
-export function update({ id, ...customer }) {
-  return Customer.query().patchAndFetchById(id, customer);
+export function saveOrUpdate(customer) {
+  return customer.id
+    ? Customer.query().patchAndFetchById(customer.id, customer)
+    : Customer.query().insert(customer);
 }
 
 export function remove(id) {

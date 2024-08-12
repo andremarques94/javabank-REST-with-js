@@ -1,5 +1,9 @@
 import { Model } from "objection";
 
+function generateTimestamp() {
+  return new Date().toISOString().slice(0, 23).replace("T", " ");
+}
+
 class Account extends Model {
   static get tableName() {
     return "account";
@@ -52,6 +56,21 @@ class Account extends Model {
   $beforeUpdate() {
     this.updateTime = generateTimestamp();
     this.version += 1;
+  }
+
+  credit(amount) {
+    if (amount <= 0) throw new Error("Amount must be greater than 0");
+    if (!Number.isInteger(amount)) throw new Error("Amount must be an integer");
+
+    this.balance += amount;
+  }
+
+  debit(amount) {
+    if (amount <= 0) throw new Error("Amount must be greater than 0");
+    if (!Number.isInteger(amount)) throw new Error("Amount must be an integer");
+    if (this.balance < amount) throw new Error("Insufficient funds");
+
+    this.balance -= amount;
   }
 }
 
