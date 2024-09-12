@@ -12,8 +12,13 @@ Like this they're able to see the full stack in action.
 
 ### Endpoints
 
+## Account
+
 - GET /account
 - GET /account/:id
+
+## Customer
+
 - GET /customers
 - GET /customers/:id
 - POST /customer
@@ -28,8 +33,14 @@ Like this they're able to see the full stack in action.
 - Objection.js / Knex.js
 - MySQL
 
-### How to run
+### How to run in development mode
 
 1. Clone the repository
 2. Run `npm install`
 3. Run `npm run dev`
+
+### How to run in production mode
+
+1. Clone the repository
+2. Run `npm install`
+3. Run `npm start`
